@@ -1,0 +1,15 @@
+# Ignore dependencies
+node_modules/
+package-lock.json
+
+# Ignore environment files
+.env
+config/config.env
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore database files (if applicable)
+*.sqlite
+*.db
