@@ -4,6 +4,7 @@ const passport = require('passport');
 require('dotenv').config();
 require('./config/passport');
 const sequelize = require('./config/db');
+const { User, Post } = require('./models'); 
 
 const app = express();
 const PORT = process.env.PORT || 5000;

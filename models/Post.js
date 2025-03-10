@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
+const User = require('./User'); // Import User model
 
 const Post = sequelize.define('Post', {
     id: {
@@ -7,9 +8,14 @@ const Post = sequelize.define('Post', {
         autoIncrement: true,
         primaryKey: true
     },
-    userId: {
+    userId: { 
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        references: {  
+            model: User,  
+            key: 'id'
+        },
+        onDelete: 'CASCADE'
     },
     content: {
         type: DataTypes.TEXT,
