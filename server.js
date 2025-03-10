@@ -20,6 +20,7 @@ app.use(passport.session());
 // Routes
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/users', require('./routes/userRoutes'));
+app.use('/posts', require('./routes/postRoutes'));
 
 app.get('/', (req, res) => {
     res.send("Welcome to Social Backend - Google OAuth Setup");
