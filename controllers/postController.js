@@ -20,7 +20,7 @@ exports.getAllPosts = async (req, res) => {
         const posts = await Post.findAll({
             include: {
                 model: User,
-                attributes: ['name'] 
+                attributes: ['name', 'profile_picture'] 
             }
         });
 

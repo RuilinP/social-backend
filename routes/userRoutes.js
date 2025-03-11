@@ -14,6 +14,20 @@ router.get('/me', authMiddleware, async (req, res) => {
     }
 });
 
+router.get('/:id', async (req, res) => {
+    try {
+        const user = await User.findByPk(req.params.id, {
+            attributes: ['id', 'name', 'email', 'profile_picture'] 
+        });
+
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ message: "Server error", error });
+    }
+});
+
 // Update user profile
 router.put('/:id', authMiddleware, async (req, res) => {
     if (req.user.id !== req.params.id) {
