@@ -1,5 +1,6 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
+const PostImage = require('../models/PostImage'); 
 
 exports.createPost = async (req, res) => {
     try {
@@ -8,6 +9,14 @@ exports.createPost = async (req, res) => {
             userId: req.user.id,
             content
         });
+
+        if (req.files) {
+            const images = req.files.map(file => ({
+                postId: post.id,
+                imageUrl: `/uploads/${file.filename}`
+            }));
+            await PostImage.bulkCreate(images);  
+        }
 
         res.status(201).json(post);
     } catch (error) {
@@ -18,10 +27,16 @@ exports.createPost = async (req, res) => {
 exports.getAllPosts = async (req, res) => {
     try {
         const posts = await Post.findAll({
-            include: {
-                model: User,
-                attributes: ['name', 'profile_picture'] 
-            }
+            include:  [
+                {
+                    model: User,
+                    attributes: ['name', 'profile_picture']
+                },
+                {
+                    model: PostImage,
+                    attributes: ['imageUrl']  // ✅ Include all images
+                }
+            ]
         });
 
         res.json(posts);
