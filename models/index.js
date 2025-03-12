@@ -30,6 +30,10 @@ PostLike.belongsTo(User, { foreignKey: 'userId' });
 Post.hasMany(PostLike, { foreignKey: 'userId' });
 PostLike.belongsTo(Post, { foreignKey: 'userId' });
 
+// User - CommentLike
+User.hasMany(CommentLike, { foreignKey: 'userId', onDelete: 'CASCADE' });
+CommentLike.belongsTo(User, { foreignKey: 'userId' });
+
 // User - Commentlike
 Comment.hasMany(CommentLike, { foreignKey: 'commentId' });
 CommentLike.belongsTo(Comment, { foreignKey: 'commentId' });
