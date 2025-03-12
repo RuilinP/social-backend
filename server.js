@@ -4,7 +4,7 @@ const passport = require('passport');
 require('dotenv').config();
 require('./config/passport');
 const sequelize = require('./config/db');
-const { User, Post } = require('./models'); 
+const { User, Post } = require('./models');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -22,7 +22,7 @@ app.use(passport.session());
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/users', require('./routes/userRoutes'));
 app.use('/posts', require('./routes/postRoutes'));
-app.use('/comments',require('./routes/commentRoutes'));
+app.use('/comments', require('./routes/commentRoutes'));
 
 app.get('/', (req, res) => {
     res.send("Welcome to Social Backend - Google OAuth Setup");
