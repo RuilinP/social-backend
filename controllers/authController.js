@@ -23,5 +23,7 @@ exports.googleAuthCallback = async (req, res) => {
         { expiresIn: '1h' }
     );
 
-    res.json({ message: "Login successful!", token });
+    // Instead of returning JSON, redirect with token in URL
+    res.redirect(`http://localhost:3000?token=${token}`);
 };
+

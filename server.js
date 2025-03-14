@@ -5,8 +5,15 @@ require('dotenv').config();
 require('./config/passport');
 const sequelize = require('./config/db');
 const { User, Post } = require('./models');
+const cors = require("cors");
 
 const app = express();
+app.use(
+    cors({
+      origin: "http://localhost:3000", 
+      credentials: true, 
+    })
+  );
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());  // Middleware to parse JSON
