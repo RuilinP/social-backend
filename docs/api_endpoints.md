@@ -47,3 +47,62 @@ GET /auth/logout
 
 #### Response
 - **302 Found** → Redirects to `/` after logging out.
+
+---
+
+## 2. Comment Endpoints
+Handles comments on posts.
+
+### 2.1 Get All Comments
+**Endpoint:** `GET /comments`  
+**Description:** Retrieves all comments.  
+**Authentication Required:** ❌ (Public)
+
+---
+
+### 2.2 Get Comments for a Post
+**Endpoint:** `GET /comments/post/:postId`  
+**Description:** Retrieves all comments for a specific post.  
+**Authentication Required:** ❌ (Public)  
+
+---
+
+### 2.3 Create a Comment
+**Endpoint:** `POST /comments/post/:postId`  
+**Description:** Creates a comment on a specific post.  
+**Authentication Required:** ✅ (User must be logged in)  
+
+---
+
+### 2.4 Delete a Comment
+**Endpoint:** `DELETE /comments/:id`  
+**Description:** Deletes a comment.  
+**Authentication Required:** ✅ (User must be logged in)  
+
+---
+
+### 2.5 Like a Comment
+**Endpoint:** `POST /comments/:commentId/like`  
+**Description:** Likes a comment.  
+**Authentication Required:** ✅ (User must be logged in)  
+
+---
+
+### 2.6 Unlike a Comment
+**Endpoint:** `DELETE /comments/:commentId/unlike`  
+**Description:** Removes a like from a comment.  
+**Authentication Required:** ✅ (User must be logged in)  
+
+---
+
+### 2.7 Get Comment Like Count
+**Endpoint:** `GET /comments/:commentId/count`  
+**Description:** Retrieves the total number of likes for a comment.  
+**Authentication Required:** ✅ (User must be logged in)  
+
+---
+
+### 2.8 Get Comment Likers
+**Endpoint:** `GET /comments/:commentId/likers` 
+**Description:** Retrieves a list of users who liked a comment.  
+**Authentication Required:** ✅ (User must be logged in)  
