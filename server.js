@@ -6,6 +6,7 @@ require('./config/passport');
 const sequelize = require('./config/db');
 const { User, Post } = require('./models');
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 app.use(
@@ -24,6 +25,8 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes
 app.use('/auth', require('./routes/authRoutes'));
