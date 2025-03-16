@@ -98,11 +98,61 @@ Handles comments on posts.
 ### 2.7 Get Comment Like Count
 **Endpoint:** `GET /comments/:commentId/count`  
 **Description:** Retrieves the total number of likes for a comment.  
-**Authentication Required:** ✅ (User must be logged in)  
+**Authentication Required:** ❌ (Public) 
 
 ---
 
 ### 2.8 Get Comment Likers
 **Endpoint:** `GET /comments/:commentId/likers` 
 **Description:** Retrieves a list of users who liked a comment.  
+**Authentication Required:** ❌ (Public)  
+
+---
+
+## 3. Post Endpoints
+Handles user posts.
+
+### 3.1 Create a Post
+**Endpoint:** `POST /posts`  
+**Description:** Creates a new post with optional image uploads.  
 **Authentication Required:** ✅ (User must be logged in)  
+
+### 3.2 Get All Posts
+**Endpoint:** `GET /posts`  
+**Description:** Retrieves all posts.  
+**Authentication Required:** ❌ (Public)  
+
+---
+
+### 3.3 Delete a Post
+**Endpoint:** `DELETE /posts/:id`  
+**Description:** Deletes a post.  
+**Authentication Required:** ✅ (User must be logged in)  
+
+---
+
+### 3.4 Like a Post
+**Endpoint:** `POST /posts/:postId/like`  
+**Description:** Likes a post.  
+**Authentication Required:** ✅ (User must be logged in)  
+
+---
+
+### 3.5 Unlike a Post
+**Endpoint:** `DELETE /posts/:postId/unlike`  
+**Description:** Removes a like from a post.  
+**Authentication Required:** ✅ (User must be logged in)  
+
+---
+
+### 3.6 Get Post Like Count
+**Endpoint:** `GET /posts/:postId/count`  
+**Description:** Retrieves the total number of likes for a post.  
+**Authentication Required:** ❌ (Public) 
+
+---
+
+### 3.7 Get Post Likers
+**Endpoint:** `GET /posts/:postId/likers`  
+**Description:** Retrieves a list of users who liked a post.  
+**Authentication Required:** ❌ (Public) 
