@@ -156,3 +156,28 @@ Handles user posts.
 **Endpoint:** `GET /posts/:postId/likers`  
 **Description:** Retrieves a list of users who liked a post.  
 **Authentication Required:** ❌ (Public) 
+
+---
+
+## 4. User Endpoints
+Handles user profiles.
+
+### 4.1 Get Current User Profile
+**Endpoint:** `GET /users/me`  
+**Description:** Retrieves the profile of the logged-in user.  
+**Authentication Required:** ✅ (User must be logged in)  
+
+---
+
+### 4.2 Get User By ID
+**Endpoint:** `GET /users/:id`  
+**Description:** Retrieves the public profile of a specific user.  
+**Authentication Required:** ❌ (Public)  
+
+---
+
+### 4.3 Update User Profile
+**Endpoint:** `PUT /users/:id`  
+**Description:** Updates the profile of the logged-in user.  
+**Authentication Required:** ✅ (User must be logged in)
+
