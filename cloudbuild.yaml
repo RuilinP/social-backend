@@ -3,18 +3,18 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/social-repo/social-app:$SHORT_SHA', '.' ]
 
-  # Step 2: Push Image to Artifact Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'us-central1-docker.pkg.dev/$PROJECT_ID/social-repo/social-app:$SHORT_SHA' ]
+  # # Step 2: Push Image to Artifact Registry
+  # - name: 'gcr.io/cloud-builders/docker'
+  #   args: [ 'push', 'us-central1-docker.pkg.dev/$PROJECT_ID/social-repo/social-app:$SHORT_SHA' ]
 
-  # Step 3: Deploy to GKE
-  - name: 'gcr.io/cloud-builders/gke-deploy'
-    args:
-      - 'run'
-      - '--image=us-central1-docker.pkg.dev/$PROJECT_ID/social-repo/social-app:$SHORT_SHA'
-      - '--location=us-central1'
-      - '--cluster=dev-repo'
-      - '--namespace=default'
+  # # Step 3: Deploy to GKE
+  # - name: 'gcr.io/cloud-builders/gke-deploy'
+  #   args:
+  #     - 'run'
+  #     - '--image=us-central1-docker.pkg.dev/$PROJECT_ID/social-repo/social-app:$SHORT_SHA'
+  #     - '--location=us-central1'
+  #     - '--cluster=dev-repo'
+  #     - '--namespace=default'
 
 substitutions:
   _REGION: "us-central1"
