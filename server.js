@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());  // Middleware to parse JSON
 app.use(session({
-    secret: process.env.JWT_SECRET || "fallback_jwt_secret",
+    secret: process.env.JWT_SECRET || "f27de97969c2e64b0f56efb8e5c79060b216b56b693a3837bc69e689ab912345",
     resave: false,
     saveUninitialized: true
 }));
