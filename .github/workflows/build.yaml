@@ -47,15 +47,14 @@ jobs:
           location: ${{ env.GKE_ZONE }}
 
       - name: Deploy to GKE
-  run: |
-    # Check if deployment exists
-    if kubectl get deployment ${{ env.DEPLOYMENT_NAME }}; then
-      echo "Updating existing deployment..."
-      kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} social-backend=${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}
-    else
-      echo "Creating new deployment..."
-      kubectl apply -f k8s/backend-deployment.yml
-    fi
-    
-    kubectl rollout status deployment/${{ env.DEPLOYMENT_NAME }}
-
+        run: |
+          # Check if deployment exists
+          if kubectl get deployment ${{ env.DEPLOYMENT_NAME }}; then
+            echo "Updating existing deployment..."
+            kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} backend=${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:${{ github.sha }}
+          else
+            echo "Creating new deployment..."
+            kubectl apply -f k8s/backend-deployment.yml
+          fi
+          
+          kubectl rollout status deployment/${{ env.DEPLOYMENT_NAME }}
