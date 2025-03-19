@@ -13,7 +13,7 @@ spec:
         app: backend
     spec:
       containers:
-        - name: backend
+        - name: social-backend  # ✅ Correct container name
           image: us-central1-docker.pkg.dev/tactical-codex-448305-v5/social-repo/social-backend:latest
           ports:
             - containerPort: 5000
