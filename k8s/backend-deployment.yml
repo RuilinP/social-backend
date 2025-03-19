@@ -13,10 +13,30 @@ spec:
         app: backend
     spec:
       containers:
-        - name: social-backend  # ✅ Correct container name
+        - name: social-backend
           image: us-central1-docker.pkg.dev/tactical-codex-448305-v5/social-repo/social-backend:latest
           ports:
             - containerPort: 5000
           env:
             - name: DATABASE_URL
               value: "mysql://ruilin:alarm@34.234.162.51:3306/social"
+            - name: GOOGLE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: GOOGLE_CLIENT_ID
+            - name: GOOGLE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: GOOGLE_CLIENT_SECRET
+            - name: GOOGLE_CALLBACK_URL
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: GOOGLE_CALLBACK_URL
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: JWT_SECRET
