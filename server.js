@@ -11,7 +11,7 @@ const path = require("path");
 const app = express();
 app.use(
     cors({
-      origin: "http://social.ruilin.moe:80", 
+      origin: "http://social.ruilin.moe/", 
       credentials: true, 
     })
   );
