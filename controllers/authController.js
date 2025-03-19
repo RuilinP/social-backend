@@ -24,6 +24,6 @@ exports.googleAuthCallback = async (req, res) => {
     );
 
     // Instead of returning JSON, redirect with token in URL
-    res.redirect(`http://localhost:3000?token=${token}`);
+    res.redirect(`http://frontend:80?token=${token}`);
 };
 
