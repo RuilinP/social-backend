@@ -19,7 +19,8 @@ GET /auth/google
 
 #### Sample Response
 HTTP/1.1 302 Found
-Location: https://accounts.google.com/o/oauth2/auth?client_id=your-client-id&redirect_uri=your-redirect-uri&response_type=code&scope=your-scope
+
+Location: https://accounts.google.com/o/oauth2/auth?client_id=your-client-id&redirect_uri=your-redirect-uri
 
 #### Payload Example
 ```
@@ -27,7 +28,6 @@ Location: https://accounts.google.com/o/oauth2/auth?client_id=your-client-id&red
   "client_id": "your_google_client_id",
   "redirect_uri": "your_redirect_uri"
 }
-
 ```
 
 ---
@@ -48,6 +48,7 @@ GET /auth/google/callback
 
 #### Sample Response
 HTTP/1.1 302 Found
+
 Location: /dashboard
 
 #### Payload Example
@@ -55,7 +56,6 @@ Location: /dashboard
 {
   "code": "authorization_code_from_google"
 }
-
 ```
 
 ---
@@ -75,6 +75,7 @@ GET /auth/logout
 
 #### Sample Response
 HTTP/1.1 302 Found
+
 Location: /
 
 #### Payload Example
@@ -82,7 +83,6 @@ Location: /
 {
   "message": "Logged out successfully"
 }
-
 ```
 
 ---
@@ -104,6 +104,7 @@ GET /comments
 200 OK → List of all comments.
 
 #### Sample Response
+```
 {
   "comments": [
     {
@@ -120,13 +121,13 @@ GET /comments
     }
   ]
 }
+```
 
 #### Payload Example
 ```
 {
   "message": "All comments"
 }
-
 ```
 
 ---
@@ -145,6 +146,7 @@ GET /comments/post/456
 200 OK → List of comments for the post.
 
 #### Sample Response
+```
 {
   "comments": [
     {
@@ -155,13 +157,13 @@ GET /comments/post/456
     }
   ]
 }
+```
 
 #### Payload Example
 ```
 {
   "message": "All comments for the ID post 456"
 }
-
 ```
 
 ---
@@ -180,6 +182,7 @@ POST /comments/post/456
 200 OK → List of comments for the post.
 
 #### Sample Response
+```
 {
   "message": "Comment created successfully",
   "comment": {
@@ -189,13 +192,13 @@ POST /comments/post/456
     "post_id": "456"
   }
 }
+```
 
 #### Payload Example
 ```
 {
   "content": "This is a new comment."
 }
-
 ```
 
 ---
@@ -218,7 +221,6 @@ GET /comments/post/456
 {
   "message": "Comment deleted successfully"
 }
-
 ```
 
 ---
@@ -241,7 +243,6 @@ POST /comments/1/like
 {
   "message": "Comment liked successfully"
 }
-
 ```
 
 ---
@@ -260,16 +261,17 @@ DELETE /comments/1/unlike
 200 OK → Remove like from a comment.
 
 #### Sample Response
+```
 {
   "like_count": 9
 }
+```
 
 #### Payload Example
 ```
 {
   "message": "Like removed successfully"
 }
-
 ```
 
 ---
@@ -285,12 +287,14 @@ GET /comments/1/count
 ```
 
 #### Response
-200 OK → Gives number of likes of a comment.
+200 OK → Gives the number of likes of a comment.
 
 #### Sample Response
+```
 {
   "like_count": 10
 }
+```
 
 #### Payload Example
 ```
@@ -315,6 +319,7 @@ GET /comments/1/likers
 200 OK → List of users who liked a comment.
 
 #### Sample Response
+```
 {
   "likers": [
     {
@@ -327,13 +332,13 @@ GET /comments/1/likers
     }
   ]
 }
+```
 
 #### Payload Example
 ```
 {
   "message": "Users retrieved successfully"
 }
-
 ```
 
 ---
@@ -355,6 +360,7 @@ POST /posts
 200 OK → Creates a new post.
 
 #### Sample Response
+```
 {
   "message": "Post created successfully",
   "post": {
@@ -365,6 +371,7 @@ POST /posts
     "user_id": "123"
   }
 }
+```
 
 #### Payload Example
 ```
@@ -373,7 +380,6 @@ POST /posts
   "content": "This is the content of the post.",
   "image_url": "http://example.com/image.jpg"
 }
-
 ```
 
 ---
@@ -392,6 +398,7 @@ GET /posts
 200 OK → Gives all posts.
 
 #### Sample Response
+```
 {
   "posts": [
     {
@@ -403,13 +410,13 @@ GET /posts
     }
   ]
 }
+```
 
 #### Payload Example
 ```
 {
   "message": "All posts retrieved successfully"
 }
-
 ```
 
 ---
@@ -432,7 +439,6 @@ DELETE /posts/789
 {
   "message": "Post deleted successfully"
 }
-
 ```
 
 ---
@@ -455,7 +461,6 @@ POST /posts/789/like
 {
   "message": "Post liked successfully"
 }
-
 ```
 
 ---
@@ -478,7 +483,6 @@ DELETE /posts/789/unlike
 {
   "message": "Like removed successfully"
 }
-
 ```
 
 ---
@@ -497,16 +501,17 @@ GET /posts/789/count
 200 OK → Gives numbers of.
 
 #### Sample Response
+```
 {
   "like_count": 15
 }
+```
 
 #### Payload Example
 ```
 {
   "message": "Number of likes retrieved successfully"
 }
-
 ```
 
 ---
@@ -525,6 +530,7 @@ GET /posts/789/likers
 200 OK → Gives all users who liked.
 
 #### Sample Response
+```
 {
   "likers": [
     {
@@ -537,13 +543,13 @@ GET /posts/789/likers
     }
   ]
 }
+```
 
 #### Payload Example
 ```
 {
   "message": "All users retrieved successfully"
 }
-
 ```
 
 ---
@@ -565,18 +571,19 @@ GET /users/me
 200 OK → Retrieves the logged-in profile.
 
 #### Sample Response
+```
 {
   "id": "123",
   "username": "user1",
   "email": "user1@example.com"
 }
+```
 
 #### Payload Example
 ```
 {
   "message": "Profile retrieved successfully"
 }
-
 ```
 
 ---
@@ -595,18 +602,19 @@ GET /users/123
 200 OK → Retrieves a specific profile.
 
 #### Sample Response
+```
 {
   "id": "123",
   "username": "user1",
   "email": "user1@example.com"
 }
+```
 
 #### Payload Example
 ```
 {
   "message": "Profile retrieved successfully"
 }
-
 ```
 
 ---
@@ -625,6 +633,7 @@ PUT /users/123
 200 OK → Updates the logged-in profile.
 
 #### Sample Response
+```
 {
   "message": "Profile updated successfully",
   "user": {
@@ -633,11 +642,11 @@ PUT /users/123
     "email": "new_email@example.com"
   }
 }
+```
 
 #### Payload Example
 ```
 {
   "message": "Profile updated successfully"
 }
-
 ```
