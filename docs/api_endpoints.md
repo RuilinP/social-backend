@@ -18,6 +18,7 @@ GET /auth/google
 - **302 Found** → Redirects the user to the Google OAuth page.
 
 #### Sample Response
+
 HTTP/1.1 302 Found
 
 Location: https://accounts.google.com/o/oauth2/auth?client_id=your-client-id&redirect_uri=your-redirect-uri
@@ -47,6 +48,7 @@ GET /auth/google/callback
 - **302 Found** → Redirects to `/` on failure.
 
 #### Sample Response
+
 HTTP/1.1 302 Found
 
 Location: /dashboard
@@ -74,6 +76,7 @@ GET /auth/logout
 - **302 Found** → Redirects to `/` after logging out.
 
 #### Sample Response
+
 HTTP/1.1 302 Found
 
 Location: /
@@ -104,6 +107,7 @@ GET /comments
 200 OK → List of all comments.
 
 #### Sample Response
+
 ```
 {
   "comments": [
@@ -146,6 +150,7 @@ GET /comments/post/456
 200 OK → List of comments for the post.
 
 #### Sample Response
+
 ```
 {
   "comments": [
@@ -182,6 +187,7 @@ POST /comments/post/456
 200 OK → List of comments for the post.
 
 #### Sample Response
+
 ```
 {
   "message": "Comment created successfully",
@@ -261,6 +267,7 @@ DELETE /comments/1/unlike
 200 OK → Remove like from a comment.
 
 #### Sample Response
+
 ```
 {
   "like_count": 9
@@ -290,6 +297,7 @@ GET /comments/1/count
 200 OK → Gives the number of likes of a comment.
 
 #### Sample Response
+
 ```
 {
   "like_count": 10
@@ -319,6 +327,7 @@ GET /comments/1/likers
 200 OK → List of users who liked a comment.
 
 #### Sample Response
+
 ```
 {
   "likers": [
@@ -360,6 +369,7 @@ POST /posts
 200 OK → Creates a new post.
 
 #### Sample Response
+
 ```
 {
   "message": "Post created successfully",
@@ -398,6 +408,7 @@ GET /posts
 200 OK → Gives all posts.
 
 #### Sample Response
+
 ```
 {
   "posts": [
@@ -501,6 +512,7 @@ GET /posts/789/count
 200 OK → Gives numbers of.
 
 #### Sample Response
+
 ```
 {
   "like_count": 15
@@ -530,6 +542,7 @@ GET /posts/789/likers
 200 OK → Gives all users who liked.
 
 #### Sample Response
+
 ```
 {
   "likers": [
@@ -571,6 +584,7 @@ GET /users/me
 200 OK → Retrieves the logged-in profile.
 
 #### Sample Response
+
 ```
 {
   "id": "123",
@@ -602,6 +616,7 @@ GET /users/123
 200 OK → Retrieves a specific profile.
 
 #### Sample Response
+
 ```
 {
   "id": "123",
@@ -633,6 +648,7 @@ PUT /users/123
 200 OK → Updates the logged-in profile.
 
 #### Sample Response
+
 ```
 {
   "message": "Profile updated successfully",
