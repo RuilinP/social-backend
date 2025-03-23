@@ -11,8 +11,8 @@ const path = require("path");
 const app = express();
 app.use(
     cors({
-        origin: "http://local.social-media-app.com",
-        credentials: true,
+      origin: "http://local.social-media-app.com", 
+      credentials: true, 
     })
 );
 const PORT = process.env.PORT || 5000;
@@ -44,5 +44,5 @@ sequelize.sync({ force: false })  // Set force: true ONLY if you want to reset D
     .catch(err => console.error("❌ Database sync error:", err));
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on ${PORT}`);
+    console.log(`🚀 Server running on:${PORT}`);
 });

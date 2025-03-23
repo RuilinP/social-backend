@@ -1,21 +1,21 @@
-# Use Node.js LTS version as base
+
+# Use an official Node.js runtime as a parent image
 FROM node:18
 
-# Create app directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Install app dependencies
-COPY package*.json ./
+# Copy package.json and package-lock.json
+COPY package.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy the rest of the backend code
+# Copy the rest of the application
 COPY . .
 
-# Set environment variables if needed
-# ENV PORT=5000
-
-# Expose backend port
+# Expose port 5000 (or whatever your backend uses)
 EXPOSE 5000
 
-# Run the app
+# Start the server
 CMD ["node", "server.js"]
