@@ -17,5 +17,8 @@ COPY . .
 # Expose port 5000 (or whatever your backend uses)
 EXPOSE 5000
 
+# Set environment variable inside container
+ENV CLIENT_ORIGIN=http://local.social-media-app.com
+
 # Start the server
 CMD ["node", "server.js"]
