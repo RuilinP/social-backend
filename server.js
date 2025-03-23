@@ -11,7 +11,7 @@ const path = require("path");
 const app = express();
 app.use(
     cors({
-      origin: "http://localhost:3000", 
+      origin: "http://local.social-media-app.com", 
       credentials: true, 
     })
   );
@@ -44,5 +44,5 @@ sequelize.sync({ force: false })  // Set force: true ONLY if you want to reset D
     .catch(err => console.error("❌ Database sync error:", err));
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on:${PORT}`);
 });
