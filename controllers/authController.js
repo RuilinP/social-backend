@@ -24,6 +24,6 @@ exports.googleAuthCallback = async (req, res) => {
     );
 
     // Instead of returning JSON, redirect with token in URL
-    res.redirect(`http://local.social-media-app.com?token=${token}`);
+    res.redirect(`${process.env.CLIENT_HOME_PAGE_URL}?token=${token}`);
 };
 
