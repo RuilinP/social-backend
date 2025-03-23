@@ -14,7 +14,7 @@ app.use(
       origin: "http://local.social-media-app.com", 
       credentials: true, 
     })
-  );
+);
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());  // Middleware to parse JSON
