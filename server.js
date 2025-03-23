@@ -11,8 +11,8 @@ const path = require("path");
 const app = express();
 app.use(
     cors({
-      origin: "http://local.social-media-app.com", 
-      credentials: true, 
+        origin: process.env.CLIENT_ORIGIN || "http://local.social-media-app.com",
+        credentials: true,
     })
 );
 const PORT = process.env.PORT || 5000;
