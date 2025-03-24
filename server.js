@@ -9,13 +9,18 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
+console.log("CLIENT_ORIGIN:", process.env.CLIENT_ORIGIN);
+
 app.use(
     cors({
-        origin: "http://local.social-media-app.com",
+        origin: process.env.CLIENT_ORIGIN || "http://local.social-media-app.com",
         credentials: true,
     })
 );
+console.log("CLIENT_ORIGIN:", process.env.CLIENT_ORIGIN);
+
 const PORT = process.env.PORT || 5000;
+console.log("CLIENT_ORIGIN:", process.env.CLIENT_ORIGIN);
 
 app.use(express.json());  // Middleware to parse JSON
 app.use(session({
@@ -44,5 +49,5 @@ sequelize.sync({ force: false })  // Set force: true ONLY if you want to reset D
     .catch(err => console.error("❌ Database sync error:", err));
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on ${PORT}`);
+    console.log(`🚀 Server running on:${PORT}`);
 });
