@@ -4,9 +4,9 @@ require('dotenv').config();
 // Ensure all required environment variables are set
 const {
     DB_DATABASE = "social",
-    DB_USERNAME = "ruilin",
+    DB_USERNAME = "root",
     DB_PASSWORD = "alarm",
-    DB_HOST = "34.234.162.51",
+    DB_HOST = "34.170.38.88",
     DB_DIALECT = "mysql"
 } = process.env;
 
