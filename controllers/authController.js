@@ -24,6 +24,6 @@ exports.googleAuthCallback = async (req, res) => {
     );
 
     // Instead of returning JSON, redirect with token in URL
-    res.redirect(`http://bluestrap.ruilin.moe/?token=${token}`);
+    res.redirect(`http://social.ruilin.moe/?token=${token}`);
 };
 
