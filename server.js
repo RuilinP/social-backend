@@ -8,13 +8,28 @@ const { User, Post } = require('./models');
 const cors = require("cors");
 const path = require("path");
 
+
 const app = express();
-app.use(
+const allowedOrigins = [
+    "http://social.ruilin.moe",
+    "http://localhost:3000",
+    "http://bluestrap.ruilin.moe"
+  ];
+  
+  app.use(
     cors({
-      origin: "http://social.ruilin.moe", 
-      credentials: true, 
+      origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error("Not allowed by CORS"));
+        }
+      },
+      credentials: true,
     })
   );
+  
+
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());  // Middleware to parse JSON
