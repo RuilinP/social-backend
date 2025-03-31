@@ -2,6 +2,32 @@ const Post = require('../models/Post');
 const User = require('../models/User');
 const PostImage = require('../models/PostImage'); 
 
+const { bucket } = require('../config/gcs');
+const { format } = require('util');
+const { v4: uuidv4 } = require('uuid');
+
+const uploadToGCS = (file) => {
+    return new Promise((resolve, reject) => {
+      const filename = `${Date.now()}-${uuidv4()}-${file.originalname}`;
+      const blob = bucket.file(filename);
+      const blobStream = blob.createWriteStream({
+        resumable: false,
+        contentType: file.mimetype,
+      });
+  
+      blobStream.on('error', err => reject(err));
+  
+      blobStream.on('finish', () => {
+        const publicUrl = format(
+          `https://storage.googleapis.com/${bucket.name}/${blob.name}`
+        );
+        resolve(publicUrl);
+      });
+  
+      blobStream.end(file.buffer);
+    });
+  };
+
 exports.createPost = async (req, res) => {
     try {
         const { content } = req.body;
@@ -11,11 +37,16 @@ exports.createPost = async (req, res) => {
         });
 
         if (req.files) {
-            const images = req.files.map(file => ({
-                postId: post.id,
-                imageUrl: `/uploads/${file.filename}`
-            }));
-            await PostImage.bulkCreate(images);  
+            const imageUrls = [];
+
+            for (const file of req.files) {
+                const url = await uploadToGCS(file);
+                imageUrls.push({ imageUrl: url });
+            }
+            await PostImage.bulkCreate(
+                imageUrls.map(img => ({ postId: post.id, imageUrl: img.imageUrl }))
+            );            
+ 
         }
 
         res.status(201).json(post);
